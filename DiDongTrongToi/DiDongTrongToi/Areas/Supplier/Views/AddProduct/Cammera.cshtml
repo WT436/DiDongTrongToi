@@ -1,0 +1,41 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_Cammera
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Camera
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("Cammera","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.dophangiai, new { @type = "text", @placeholder = "Độ Phân Giải", @class = "khung" })
+            @Html.TextBoxFor(model => model.nguondienvao, new { @type = "number", @placeholder = "Nguồn Điện Vào", @class = "khung" })
+            @Html.TextBoxFor(model => model.tamNhinHongNgoai, new { @type = "number", @placeholder = "Tầm Nhìn Hồng Ngoại", @class = "khung" })
+            @Html.TextBoxFor(model => model.hoTroTheNho, new { @type = "text", @placeholder = "Hỗ trợ Thẻ Nhớ", @class = "khung" })
+            @Html.TextBoxFor(model => model.hoTroThietBi, new { @type = "text", @placeholder = "Hỗ TRợ Thiết Bị", @class = "khung" })
+            @Html.TextBoxFor(model => model.khichthuoc, new { @type = "text", @placeholder = "Kích Thước", @class = "khung" })
+            @Html.TextBoxFor(model => model.trongluong, new { @type = "number", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.nhietdoHoatDong, new { @type = "text", @placeholder = "Nhiệt Độ Hoạt Động", @class = "khung" })
+            @Html.TextBoxFor(model => model.thuongHieu, new { @type = "text", @placeholder = "Thương Hiệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.nguonGoc, new { @type = "text", @placeholder = "Nguồn Gốc", @class = "khung" })
+            @Html.TextBoxFor(model => model.PhuKien, new { @type = "text", @placeholder = "Phụ Kiện Kèm Theo", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Tạo Mới Bộ Ảnh</button>
+        }
+    </div>
+</div>

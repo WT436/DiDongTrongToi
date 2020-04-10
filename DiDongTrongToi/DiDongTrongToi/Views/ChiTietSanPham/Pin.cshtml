@@ -1,0 +1,66 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_PIN
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hiệu Xuất</td>
+                        <td>@Model.HieuXuatXac</td>
+                    </tr>
+                    <tr>
+                        <td>dung Lượng</td>
+                        <td>@Model.dungluong</td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sạc</td>
+                        <td>@Model.thoiGianXac</td>
+                    </tr>
+                    <tr>
+                        <td>Nguồn Vào</td>
+                        <td>@Model.nguonvao</td>
+                    </tr>
+                    <tr>
+                        <td>Lõi Pin</td>
+                        <td>@Model.loiPin</td>
+                    </tr>
+                    <tr>
+                        <td>Công Nghệ</td>
+                        <td>@Model.congnghe</td>
+                    </tr>
+                    <tr>
+                        <td>Tiện Ích</td>
+                        <td>@Model.tienich</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng Lượng</td>
+                        <td>@Model.trongLuong</td>
+                    </tr>
+                    <tr>
+                        <td>Thương Hiệu</td>
+                        <td>@Model.thuongHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Nguồn Gốc</td>
+                        <td>@Model.NguonGoc</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

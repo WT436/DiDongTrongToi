@@ -1,0 +1,57 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_CapSac
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Chức Năng </td>
+                        <td>@Model.chucNang</td>
+                    </tr>
+                    <tr>
+                        <td>Đầu Vào</td>
+                        <td>@Model.dauvao</td>
+                    </tr>
+                    <tr>
+                        <td>Đầu Ra</td>
+                        <td>@Model.dauRa</td>
+                    </tr>
+                    <tr>
+                        <td>Công Nghệ</td>
+                        <td>@Model.congNghe</td>
+                    </tr>
+                    <tr>
+                        <td>Tiện Ích</td>
+                        <td>@Model.tienIch</td>
+                    </tr>
+                    <tr>
+                        <td>Độ Dài Dây</td>
+                        <td>@Model.doDaiDay</td>
+                    </tr>
+                    <tr>
+                        <td>Thương Hiệu</td>
+                        <td>@Model.ThuongHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Sản Xuất Tại</td>
+                        <td>@Model.NguonGoc</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

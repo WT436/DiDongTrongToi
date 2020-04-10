@@ -1,0 +1,40 @@
+﻿
+@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_ThietBiNho
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Thẻ Nhớ , USB hoặc là Ổ cứng
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("ThietBiNho","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.loai, new { @type = "number", @placeholder = "Lựa chọn sản phẩm phù hợp 1 là USB 2 là Thẻ Nhớ 3 là Ổ cứng", @max = "3", @min = "1", @class = "khung" })
+            @Html.TextBoxFor(model => model.cong, new { @type = "text", @placeholder = "Các Cổng Kết Nối", @class = "khung" })
+            @Html.TextBoxFor(model => model.dungluong, new { @type = "number", @placeholder = "Dung Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocdodoc, new { @type = "number", @placeholder = "Tốc độ Đọc", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocdoghi, new { @type = "number", @placeholder = "Tốc Độ Ghi", @class = "khung" })
+            @Html.TextBoxFor(model => model.kichthuoc, new { @type = "number", @placeholder = "Kích Thước", @class = "khung" })
+            @Html.TextBoxFor(model => model.trongluong, new { @type = "number", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.noisanxuat, new { @type = "text", @placeholder = "Nơi Sản Xuất", @class = "khung" })
+            @Html.TextBoxFor(model => model.thuonghieu, new { @type = "text", @placeholder = "Thương Hiệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

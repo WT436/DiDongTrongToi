@@ -1,0 +1,62 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_ThietBiMang
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tốc Độ</td>
+                        <td>@Model.tocDo</td>
+                    </tr>
+                    <tr>
+                        <td>Băng Tần</td>
+                        <td>@Model.bangTan</td>
+                    </tr>
+                    <tr>
+                        <td>Cổng Kết Nối</td>
+                        <td>@Model.cacCongKetNoi</td>
+                    </tr>
+                    <tr>
+                        <td>Đèn Báo Hiệu</td>
+                        <td>@Model.DenBaoHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Số Ăng-Ten</td>
+                        <td>@Model.soAngTen</td>
+                    </tr>
+                    <tr>
+                        <td>Truy Cập Tối Đa</td>
+                        <td>@Model.TruyCapToiDa</td>
+                    </tr>
+                    <tr>
+                        <td>Độ Phủ Sóng</td>
+                        <td>@Model.DoPhuSong</td>
+                    </tr>
+                    <tr>
+                        <td>Nút Bấm Hỗ Trợ</td>
+                        <td>@Model.NutBamHoTro</td>
+                    </tr>
+                    <tr>
+                        <td>Màu Sắc</td>
+                        <td>@Model.mauSac</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

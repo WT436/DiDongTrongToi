@@ -1,0 +1,32 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_OpLung
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Ốp Lưng
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("OpLung","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.DongMay, new { @type = "text", @placeholder = "Dòng Máy ", @class = "khung" })
+            @Html.TextBoxFor(model => model.chatLieu, new { @type = "text", @placeholder = "Chất Liệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

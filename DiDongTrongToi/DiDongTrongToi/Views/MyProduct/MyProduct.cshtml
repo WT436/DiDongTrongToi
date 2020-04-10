@@ -1,0 +1,111 @@
+﻿@using DiDongTrongToi.Models;
+@using DiDongTrongToi.Models.Login;
+@{
+    ViewBag.Title = "SanPhamDangGiao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+@{
+    string TaiKhoan = ((Login)Session[SessionLogin.sec]).taiKhoan;
+    var Tk = db.accs.Where(m => m.taikhoan == TaiKhoan).FirstOrDefault();
+    var thongTin = db.thongTins.Where(n => n.taikhoan == TaiKhoan).FirstOrDefault();
+}
+@if (TaiKhoan == null)
+{
+    <a href="@Url.Action("Index","Login")">Bạn Cần Đăng Nhập</a>
+}
+else
+{
+    <div class="card" style="width:100%; background:#f2d073; color:black;">
+        <h5 class="card-header">
+            Thông Tin Cá Nhân
+        </h5>
+        <div class="card-body">
+            <table class="table table-sm">
+                <tbody>
+
+
+                    <tr>
+                        <td rowspan="3" style="width:20%;"><img style="width:80%; height:auto; border-radius:100%; margin:10%;" src="@thongTin.avatar" /></td>
+                        <td><i class="fa fa-user"></i>Tên : @thongTin.ten</td>
+                        <td><i class="fa fa-sun-o"></i>Tuổi : @thongTin.tuoi</td>
+                        <td><i class="fa fa-phone"></i>SDT : @thongTin.sdt</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-sign-in"></i>Tài Khoản : @Tk.taikhoan</td>
+                        <td><i class="fa fa-shield"></i>Mật Khẩu : (Chúng Tôi Không Cho Phép)<i class="fa fa-eye-slash"></i></td>
+                        <td><i class="fa fa-envelope-o"></i>Email:@Tk.gmail</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><i class="fa fa-map-marker"></i>Địa Chỉ :@thongTin.diachi</td>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td><a href="#" class="btn btn-danger"><i class="fa fa-edit">Sửa Ảnh </i></a></td>
+                        <td><a href="" class="btn btn-danger"><i class="fa fa-edit">Sửa Thông Tin </i></a></td>
+                        <td><a href="@Url.Action("Index","Login")" class="btn btn-danger"><i class="fa fa-retweet">Đổi Mật Khẩu </i></a></td>                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card" style="width:90%; margin-left:5%;">
+        <h5 class="card-header">
+            Sản Phẩm Của Bạn
+        </h5>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr style="text-align:center;">
+                        <th scope="col">Mã</th>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Số Lượng</th>
+                        <th scope="col">Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var dh = db.Dat_Hang.Where(m => m.acc == TaiKhoan && m.daXoa == false).ToList();
+                        foreach (var i in dh)
+                        {
+                            <tr style="text-align:center;">
+                                <td style="width:10%;">@i.sanpham</td>
+                                @{
+                                    var sanpham = db.sanphams.Where(k => k.id == i.sanpham).FirstOrDefault();
+                                }
+                                <td style="width:10%;"><img style="width:90%; margin-left:5%;" src="@db.anhsanphams.Where(m => m.id == sanpham.anhsanpham).FirstOrDefault().anh1" /></td>
+                                <td style="width:30%;"></td>
+                                @if (i.giamgia != null)
+                                {
+                                    int phanTram = @db.magiamgias.Where(l => l.id == i.giamgia).FirstOrDefault().phan_Tram;
+                                    var gia = db.sanphams.Where(l => l.id == i.sanpham).FirstOrDefault().gia;
+                                    var tongGia = gia * i.soLuong;
+                                    var tongGiaHienTai = (gia * i.soLuong * 100) / phanTram;
+                                    <td style="width:10%;"><b>Mã Giảm Giá:</b> @i.magiamgia <br /> <b> Số Phần Trăm:</b> @phanTram</td>                                    
+                                    <td style="width:10%;"><b style="text-decoration: line-through;">Tổng Giá Gốc:@tongGia</b><b>Giá Hiện tại:@tongGiaHienTai</b> </td>
+                                }
+                                else
+                                {
+                                    var gia = db.sanphams.Where(l => l.id == i.sanpham).FirstOrDefault().gia;
+                                    var tongGia = gia * i.soLuong;
+                                    <td style="width:10%;"><b>Tổng Giá Gốc:@tongGia</b></td>
+                                }
+
+                                <td style="width:10%;">Otto</td>
+                                <td style="width:30%;">
+                                    <a href="@Url.Action("XoaSanPham", "MyProduct", new{i=i.id})" class="btn btn-danger"><i class="fa fa-eraser">Xóa</i></a>
+                                    <a href="@Url.Action("TrangThai", "VanChuyen", new{a=i.id})" class="btn btn-primary"><i class="fa fa-eraser">Xem</i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+
+

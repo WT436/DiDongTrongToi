@@ -1,0 +1,60 @@
+﻿@using DiDongTrongToi.Models.Login;
+@model AddInfoUser
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Thiết Lập Tài Khoản</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="card" style="width:50%; margin-left:25%;">
+        <h5 class="card-header">Tạo Tài Khoản Của Bạn</h5>
+        <div class="card-body" style="text-align:center">
+            <style>
+                .ggghi {
+                    width: 70%;
+                    margin-left: 10%;
+                    margin-bottom: 30px;
+                }
+
+                .ggghykl {
+                    display: none;
+                }
+            </style>
+            <input id="file" accept="image/*" type="file" style="width:70%; display:none; margin-left:10%; margin-bottom:30px;" />
+            <input type="submit" id="nhanthinhansogi" value="Chọn ảnh đại diện">
+            <br />
+            <br />
+            <a href="#"><img id="anhcuano" src="~/Content/IMG/avatar.png" style="height:100px; width:100px; border-radius:100%;" /></a><br /><br />
+            @using (Html.BeginForm("addInFo", "Login", FormMethod.Post))
+            {
+                <div style="color:red">
+                    @Html.ValidationSummary(false, "", "Error")
+                </div>
+                @Html.TextBoxFor(model => model.taikhoan, new { @placeholder = "Tài khoản", @type = "text", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.matkhau, new { @placeholder = "Mật Khẩu", @type = "password", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.gmail, new { @placeholder = "Email", @type = "email", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.ten, new { @placeholder = "Tên", @type = "text", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.tuoi, new { @placeholder = "Tuổi", @type = "number", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.diachi, new { @placeholder = "Địa chỉ", @type = "text", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.sdt, new { @placeholder = "Số Điện Thoại", @type = "number", @class = "ggghi" })
+                @Html.TextBoxFor(model => model.anh, new { @placeholder = "Ảnh", @type = "Text", @class = "ggghi ggghykl" })
+                <br />
+                <button class="btn btn-success">Cập Nhật</button>
+            }
+
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/Home/js/sulyAnh.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+﻿@using DiDongTrongToi.Models;
+@model sanpham
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="meozzzz" style="height:50px; width:50px; margin-top:100px; position:fixed; z-index:200; float:right;">
+    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" data-toggle="modal" data-target="#exampleModalLong">
+        <i class="fa fa-2x fa-search"></i>
+    </a>
+</div>
+<div style="height:50px; width:50px; margin-top:100px; right:0px; bottom:30px; position:fixed; z-index:200; float:right;">
+    <a href="#hainam">
+        <i class="fa fa-2x fa-upload"></i>
+    </a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">TÌm Kiếm Theo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-box">
+                    <input type="text" class="search-txt" name="" placeholder="Tìm Kiếm Sản Phẩm" />
+                    <a class="search-btn" href="#">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+                <hr />
+                <from>
+                    Đánh Giá<br />
+                    <input type="radio" name="Gias" />1 Star <br />
+                    <input type="radio" name="Gias" />2 Star<br />
+                    <input type="radio" name="Gias" />3 Star<br />
+                    <input type="radio" name="Gias" />4 Star<br />
+                    <input type="radio" name="Gias" />5 Star<br />
+                </from>
+                <hr />
+                <from>
+                    Giảm Giá<br />
+                    <input type="radio" name="GiamGias" />10%-30% <br />
+                    <input type="radio" name="GiamGias" />10%-30% <br />
+                    <input type="radio" name="GiamGias" />10%-30% <br />
+                    <input type="radio" name="GiamGias" />10%-30% <br />
+                </from>
+                <hr />
+                <from>
+                    Giá<br />
+                    <input type="number" name="Gias" />--
+                    <input type="number" name="Gias" />
+
+                </from>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:coral">Áp Dụng</button>
+            </div>
+        </div>
+    </div>
+</div>
+h
+<style>
+    #QuangCao {
+        display: none;
+        height: 4em;
+        width: 90%;
+        background-color: yellow;
+        margin: 10px 5% 0 5%;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 " style="margin-top:2%;">
+            Quang Cao
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 " style="margin-top:2%;">
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Sản Phẩm Nổi Bật
+                    <a class="btn btn-light" href="@Url.Action("Card", "Home", new { id = 1 })">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{
+                                bandiDongEntities db = new bandiDongEntities();
+
+                                var SanPhamTheNoiBat = db.F_layNgauNhienSanPhamChungLoaiSimThe(12).ToList();
+                                foreach (var i in SanPhamTheNoiBat)
+                                {
+                                    var GiamGia = db.magiamgias.Where(n => n.chung == true && n.da_Xoa == false && n.Ma_san_Pham == i.id).FirstOrDefault();
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            <div class="GiamGia">Giảm:@GiamGia.phan_Tram</div>
+                                            <div class="MaGiamGia">Mã:@GiamGia.id</div>
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="~@db.anhsanphams.Where(n => n.id == i.anhsanpham).FirstOrDefault().anh1" alt="@i.ten">
+                                        </div>
+                                        <div class="TesnanPham">@i.ten</div>
+                                        <div class="GiaSanPham">@i.gia</div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Loai San Pham
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Loai San Pham
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Loai San Pham
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Loai San Pham
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                    <button type="button" class="btn btn-light">Light</button>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                <div class="anhnho">
+                                    <div class="GiamGia">Giảm:30%</div>
+                                    <div class="MaGiamGia">Mã:ASDFGHJ</div>
+                                    <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                    <img class="anhSanPham" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" alt="...">
+                                </div>
+                                <div class="TesnanPham">tengfs sdf sdfasd fasdf sadfsadf asdfsa dfsadfas dfsadf sa</div>
+                                <div class="GiaSanPham">1236547</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style=" margin:10px;"></div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 " style="margin-top:2%;">
+            quangcao
+        </div>
+    </div>
+</div>

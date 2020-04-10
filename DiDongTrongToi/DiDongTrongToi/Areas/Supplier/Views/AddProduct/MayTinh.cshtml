@@ -1,0 +1,60 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_May_Tinh
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Máy Tính
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("MayTinh", "AddProduct", FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.cpu, new { @type = "text", @placeholder = "CPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.loaiCPU, new { @type = "text", @placeholder = "Loại CPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocdocpu, new { @type = "number", @placeholder = "Tốc Độ CPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocdoToida, new { @type = "number", @placeholder = "Tốc Độ Tối Đa", @class = "khung" })
+            @Html.TextBoxFor(model => model.loaiRam, new { @type = "text", @placeholder = "Loại Ram", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocDoBusRam, new { @type = "text", @placeholder = "Tốc Độ Bus Ram", @class = "khung" })
+            @Html.TextBoxFor(model => model.hoTroRamToiDa, new { @type = "text", @placeholder = "Hỗ TRợ Ram Tối Đa", @class = "khung" })
+            @Html.TextBoxFor(model => model.Ram, new { @type = "text", @placeholder = "Ram Hiện Tại", @class = "khung" })
+            @Html.TextBoxFor(model => model.OCung, new { @type = "text", @placeholder = "Ổ Cứng", @class = "khung" })
+            @Html.TextBoxFor(model => model.kichthuocManHinh, new { @type = "text", @placeholder = "Kích Thước Màn Hình", @class = "khung" })
+            @Html.TextBoxFor(model => model.DoPhanGiai, new { @type = "text", @placeholder = "Độ Phân Giải", @class = "khung" })
+            @Html.TextBoxFor(model => model.CongNgheManHinh, new { @type = "text", @placeholder = "Công Nghệ Màn Hình", @class = "khung" })
+            @Html.TextBoxFor(model => model.ManHinhCamUng, new { @type = "checkbox", @placeholder = "", @class = "khung" })<i>Man Hinh</i>
+            @Html.TextBoxFor(model => model.ThietKeCard, new { @type = "text", @placeholder = "Thiết Kế Card Màn Hình", @class = "khung" })
+            @Html.TextBoxFor(model => model.cardDoHoa, new { @type = "text", @placeholder = "Card Đồ Họa", @class = "khung" })
+            @Html.TextBoxFor(model => model.CongNgheAmThanh, new { @type = "text", @placeholder = "Công Nghệ Âm Thanh", @class = "khung" })
+            @Html.TextBoxFor(model => model.congGiaoTiep, new { @type = "text", @placeholder = "Cổng Giao Tiếp", @class = "khung" })
+            @Html.TextBoxFor(model => model.ketnoiKhongday, new { @type = "text", @placeholder = "Kết Nối KHông Dây", @class = "khung" })
+            @Html.TextBoxFor(model => model.kheDocTheNho, new { @type = "text", @placeholder = "Khe Đọc Thẻ Nhớ", @class = "khung" })
+            @Html.TextBoxFor(model => model.OdiaQuang, new { @type = "text", @placeholder = "Ổ Đĩa Quang", @class = "khung" })
+            @Html.TextBoxFor(model => model.WebCam, new { @type = "text", @placeholder = "WEbCam", @class = "khung" })
+            @Html.TextBoxFor(model => model.TinhNangKhac, new { @type = "text", @placeholder = "Tính Năng Khác", @class = "khung" })
+            @Html.TextBoxFor(model => model.DenBanPhm, new { @type = "text", @placeholder = "Đèn Bàn Phím", @class = "khung" })
+            @Html.TextBoxFor(model => model.pin, new { @type = "text", @placeholder = "PIN", @class = "khung" })
+            @Html.TextBoxFor(model => model.thongTinPhin, new { @type = "text", @placeholder = "Thông Tin Pin", @class = "khung" })
+            @Html.TextBoxFor(model => model.HeDieuHanh, new { @type = "text", @placeholder = "Hệ Điều Hành", @class = "khung" })
+            @Html.TextBoxFor(model => model.KichThuoc, new { @type = "text", @placeholder = "Kích Thước", @class = "khung" })
+            @Html.TextBoxFor(model => model.TrongLuong, new { @type = "text", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.ChatLieu, new { @type = "text", @placeholder = "Chất Liệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.ThoiDiemRaMat, new { @type = "text", @placeholder = "Thời Điểm Ra Mắt", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>
+

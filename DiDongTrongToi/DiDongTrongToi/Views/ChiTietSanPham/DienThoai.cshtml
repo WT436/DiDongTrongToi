@@ -1,0 +1,212 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_Dien_Thoai
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m=>m.id==Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Màn Hình</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Độ Phân Giải</td>
+                        <td>@Model.doPhanGiai</td>
+                    </tr>
+                    <tr>
+                        <td>Màn Hình rộng</td>
+                        <td>@Model.Man_Hinh_rong</td>
+                    </tr>
+                    <tr>
+                        <td>Mặt Kính Cảm Ứng</td>
+                        <td>@Model.KinhCamUng</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Cammera Sau</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Độ Phân Giải</td>
+                        <td>@Model.DoPhanGiaiCamerasau </td>
+                    </tr>
+                    <tr>
+                        <td>Quay Phim</td>
+                        <td>@Model.quayPhim</td>
+                    </tr>
+                    <tr>
+                        <td>Đèn Flash</td>
+                        <td>@Model.denFlash</td>
+                    </tr>
+                    <tr>
+                        <td>Chụp Ảnh Nâng Cao</td>
+                        <td>@Model.chupAnhNangCao</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Camera Trước</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Độ Phân Giải</td>
+                        <td>@Model.camera_Truoc</td>
+                    </tr>
+                    <tr>
+                        <td>VideoCall</td>
+                        <td>@Model.VideoCall</td>
+                    </tr>
+                    <tr>
+                        <td>Thông Tin Khác</td>
+                        <td>@Model.ThongTinKhacCamMera</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>CPU-Hệ Điều Hành</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Hệ Điều Hành</td>
+                        <td>@Model.he_dieu_hanh</td>
+                    </tr>
+                    <tr>
+                        <td>ChipSet(Hãng SX CPU)</td>
+                        <td>@Model.chipset</td>
+                    </tr>
+                    <tr>
+                        <td>Tốc Độ CPU</td>
+                        <td>@Model.TocDocpu</td>
+                    </tr>
+                    <tr>
+                        <td>GPU(Chíp Đồ Họa)</td>
+                        <td>@Model.GPU</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Bộ Nhớ Và Lưu Trữ</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Ram</td>
+                        <td>@Model.ram</td>
+                    </tr>
+                    <tr>
+                        <td>Bộ Nhớ Trong</td>
+                        <td>@Model.bo_nho </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Thẻ Nhớ Ngoài</td>
+                        <td>@Model.the_nho</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Kết Nối</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Mạng di Động</td>
+                        <td>@Model.hoTroMang</td>
+                    </tr>
+                    <tr>
+                        <td>Sim</td>
+                        <td>@Model.sim</td>
+                    </tr>
+                    <tr>
+                        <td>Wifi</td>
+                        <td>@Model.wifi</td>
+                    </tr>
+                    <tr>
+                        <td>GPS</td>
+                        <td>@Model.GPS</td>
+                    </tr>
+                    <tr>
+                        <td>Bluuetooth</td>
+                        <td>@Model.bluetooth</td>
+                    </tr>
+                    <tr>
+                        <td>Cổng Kết Nối /Sạc</td>
+                        <td>@Model.congKetNoi</td>
+                    </tr>
+                    <tr>
+                        <td>Jack Tai Nghe</td>
+                        <td>@Model.JackTaiNGhe</td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Thiết Kế Và Trọng Lượng</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Thiết Kế</td>
+                        <td>@Model.thietKe</td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu</td>
+                        <td>@Model.ChatLieu</td>
+                    </tr>
+                    <tr>
+                        <td>Kích Thước</td>
+                        <td>@Model.KichThuoc</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng Lượng</td>
+                        <td>@Model.TrongLuong</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Thông Tin Pin & Sạc</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Dung Lượng Pin</td>
+                        <td>@Model.dung_luong_Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Loại Pin</td>
+                        <td>@Model.LoaiPin</td>
+                    </tr>
+                    <tr>
+                        <td>Công Nghệ Pin</td>
+                        <td>@Model.CongNghePin</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Tiện Ích</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Bảo mật Nâng Cao</td>
+                        <td>@Model.BaoMat</td>
+                    </tr>
+                    <tr>
+                        <td>Tính Năng Đặc Biệt</td>
+                        <td>@Model.TinhNangNoiBat</td>
+                    </tr>
+                    <tr>
+                        <td>Ghi âm</td>
+                        <td>@Model.GhiAm</td>
+                    </tr>
+                    <tr>
+                        <td>Radio</td>
+                        <td>@Model.Radio</td>
+                    </tr>
+                    <tr>
+                        <td>Xem Phim</td>
+                        <td>@Model.XemPhim</td>
+                    </tr>
+                    <tr>
+                        <td>Nghe Nhạc</td>
+                        <td>@Model.NGheNHac</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Thông Tin Khác</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Thời Điểm Ra Mắt</td>
+                        <td>@Model.ThoiDiemRaMat</td>
+                    </tr>
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

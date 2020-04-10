@@ -1,0 +1,40 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_PIN
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Pin
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("Pin","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.HieuXuatXac, new { @type = "number", @placeholder = "Tương Thích", @class = "khung" })
+            @Html.TextBoxFor(model => model.dungluong, new { @type = "number", @placeholder = "Công xuất", @class = "khung" })
+            @Html.TextBoxFor(model => model.thoiGianXac, new { @type = "number", @placeholder = "Cách Kết Nối", @class = "khung" })
+            @Html.TextBoxFor(model => model.nguonvao, new { @type = "text", @placeholder = "Phím điều khiển", @class = "khung" })
+            @Html.TextBoxFor(model => model.loiPin, new { @type = "text", @placeholder = "Tính Năng KHác", @class = "khung" })
+            @Html.TextBoxFor(model => model.congnghe, new { @type = "text", @placeholder = "Khoẳng Cách Kết Nối BlueTooth", @class = "khung" })
+            @Html.TextBoxFor(model => model.tienich, new { @type = "text", @placeholder = "Kích Thước Siêu Trầm", @class = "khung" })
+            @Html.TextBoxFor(model => model.trongLuong, new { @type = "number", @placeholder = "Kích thước vệ tinh", @class = "khung" })
+            @Html.TextBoxFor(model => model.thuongHieu, new { @type = "text", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.NguonGoc, new { @type = "text", @placeholder = "Thương Hiệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

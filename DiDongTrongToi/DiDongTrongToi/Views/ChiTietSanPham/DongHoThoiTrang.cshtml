@@ -1,0 +1,83 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_DongHoThoiTrang
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Loại Máy</td>
+                        <td>@Model.loaimay</td>
+                    </tr>
+                    <tr>
+                        <td>Đường Kính MẶt</td>
+                        <td>@Model.duongKinhmat</td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu Mặt Kính</td>
+                        <td>@Model.chatLieuMatKinh</td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu Khung Viền</td>
+                        <td>@Model.chatLieuKhungVien</td>
+                    </tr>
+                    <tr>
+                        <td>Chống xước</td>
+                        <td>@Model.chongxuoc</td>
+                    </tr>
+                    <tr>
+                        <td>Độ Dày Mặt Kính</td>
+                        <td>@Model.dodayMat</td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu Dây</td>
+                        <td>@Model.chatLieuDay</td>
+                    </tr>
+                    <tr>
+                        <td>Độ rộng Dây</td>
+                        <td>@Model.doRongDay</td>
+                    </tr>                   
+                    <tr>
+                        <td>Nguồn Năng Lượng</td>
+                        <td>@Model.NguonNangLuong</td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sử dụng</td>
+                        <td>@Model.ThoiGianSuDungPin</td>
+                    </tr>
+                    <tr>
+                        <td>Đối Tượng Sử dụng</td>
+                        <td>@Model.DoiTuongSuDung</td>
+                    </tr>
+                    <tr>
+                        <td>Thương Hiệu</td>
+                        <td>@Model.ThuongHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Nơi Sản Xuất</td>
+                        <td>@Model.noiSanXuat</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

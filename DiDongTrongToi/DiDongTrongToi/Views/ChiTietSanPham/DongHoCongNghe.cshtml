@@ -1,0 +1,155 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_Dong_Ho_CongNghe
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Màn Hình</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Công Nghệ Màn Hình</td>
+                        <td>@Model.congNgheManHinh</td>
+                    </tr>
+                    <tr>
+                        <td>Độ Phân Giải</td>
+                        <td>@Model.doPhanGiai</td>
+                    </tr>
+                    <tr>
+                        <td>Kích Thước Màn Hình</td>
+                        <td>@Model.KichThucManHinh</td>
+                    </tr>
+                    <tr>
+                        <td>Màu Sắc</td>
+                        <td>@Model.mau_Sac</td>
+                    </tr>
+                    <tr>
+                        <td>Đường Kính Mặt</td>
+                        <td>@Model.duongKinhMat</td>
+                    </tr>
+                    <tr>
+                        <td>Màn Hình</td>
+                        <td>@Model.man_hinh</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Cấu Hình</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td>@Model.cpu</td>
+                    </tr>
+                    <tr>
+                        <td>Bộ nhớ trong</td>
+                        <td>@Model.boNhoTrong</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ Điều Hành</td>
+                        <td>@Model.HeDieuHanh</td>
+                    </tr>
+                    <tr>
+                        <td>Kết Nối Với Hệ điều Hành</td>
+                        <td>@Model.ketNoiHeDieuHanh</td>
+                    </tr>
+                    <tr>
+                        <td>Cổng Sạc</td>
+                        <td>@Model.congSac</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Pin</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sử Dụng</td>
+                        <td>@Model.ThoiGianSuDungPin</td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sạc</td>
+                        <td>@Model.thoiGianSac</td>
+                    </tr>
+                    <tr>
+                        <td>Dung Lượng Pin</td>
+                        <td>@Model.dungLuongPin</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Tiện Ích Kết Nối</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Theo Dõi Sức Khỏe</td>
+                        <td>@Model.theoDoiSucKhoe</td>
+                    </tr>
+                    <tr>
+                        <td>Hiển Thị Thông Báo</td>
+                        <td>@Model.HienThiThongBao</td>
+                    </tr>
+                    <tr>
+                        <td>Tiện Ích Khác</td>
+                        <td>@Model.TienIchKhac</td>
+                    </tr>
+                    <tr>
+                        <td>Kết Nối</td>
+                        <td>@Model.ketnoi</td>
+                    </tr>
+                    <tr>
+                        <td>Camera</td>
+                        <td>@Model.cammera</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Dây Đeo</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Độ Dài Dây</td>
+                        <td>@Model.dodaiDay</td>
+                    </tr>
+                    <tr>
+                        <td>Độ Rộng Dây</td>
+                        <td>@Model.doRongDay</td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu Dây</td>
+                        <td>@Model.chatlieuday</td>
+                    </tr>
+                    <tr>
+                        <td>Dây có thể Tháo Dời</td>
+                        <td>@Model.daycoThethaoroi</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Thông Tin Khác</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Chất Liệu Viền</td>
+                        <td>@Model.chatlieukhungvien</td>
+                    </tr>
+                    <tr>
+                        <td>Ngôn Ngữ</td>
+                        <td>@Model.ngonNgu</td>
+                    </tr>
+                    <tr>
+                        <td>kích thước</td>
+                        <td>@Model.KichThucManHinh</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng Lượng</td>
+                        <td>@Model.trongLuong</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

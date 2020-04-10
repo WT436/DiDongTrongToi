@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78052544d1b54b008a2689d6a67caa7c" Name="Diagram1" ZoomLevel="10">
+        <EntityTypeShape EntityType="bandiDongModel.acc" Width="1.5" PointX="0.75" PointY="52.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.anhsanpham" Width="1.5" PointX="5.25" PointY="67.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.BaiViet_LinhKien" Width="1.5" PointX="7.5" PointY="67" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Bao_Hanh" Width="1.5" PointX="3" PointY="53" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_Dien_Thoai" Width="1.5" PointX="9.75" PointY="51.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_Dong_Ho_CongNghe" Width="1.5" PointX="9.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_DongHoThoiTrang" Width="1.5" PointX="9.75" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_May_Tinh" Width="1.5" PointX="9.75" PointY="67.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_Cammera" Width="1.5" PointX="9.75" PointY="63.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_CapSac" Width="1.5" PointX="9.75" PointY="75.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_OpLung" Width="1.5" PointX="9.75" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_PIN" Width="1.5" PointX="9.75" PointY="82.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_tainghe" Width="1.5" PointX="9.75" PointY="86.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_ThietBiMang" Width="1.5" PointX="9.75" PointY="92.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_PhuKien_ThietBiNho" Width="1.5" PointX="9.75" PointY="96.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.chi_tiet_The_cao" Width="1.5" PointX="9.75" PointY="100.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.danh_gia" Width="1.5" PointX="6" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Danh_Gia_Trang" Width="1.5" PointX="7.5" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Danh_Muc_Theo_Chu_De" Width="1.5" PointX="3" PointY="76.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Danh_Muc_Theo_Chung_loai" Width="1.5" PointX="5.25" PointY="76.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Dat_Hang" Width="1.5" PointX="3" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Gioi_Thieu_product" Width="1.5" PointX="12.75" PointY="72.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.hang_cho" Width="1.5" PointX="3" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.like_DanhGia" Width="1.5" PointX="12.25" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.like_Rep_danhGia" Width="1.5" PointX="14.5" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.magiamgia" Width="1.5" PointX="9.75" PointY="107.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.nhacungCap" Width="1.5" PointX="5.25" PointY="72" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.rep_danh_Gia" Width="1.5" PointX="12.25" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.sanpham" Width="1.5" PointX="7.5" PointY="69.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.thongTin" Width="1.5" PointX="3" PointY="71.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bandiDongModel.Tra_Gop" Width="1.5" PointX="6" PointY="48.875" IsExpanded="true" />
+        <AssociationConnector Association="bandiDongModel.FK__Bao_Hanh__acc__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__danh_gia__acc__17C286CF" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Danh_Gia_Tr__acc__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Dat_Hang__acc__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__hang_cho__acc__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__like_DanhGi__acc__2057CCD0" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__like_Rep_da__acc__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__rep_danh_Gi__acc__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__thongTin__taikho__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Tra_Gop__acc__72910220" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__BaiViet_L__anhsa__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Gioi_Thie__anhsa__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__sanpham__anhsanp__37703C52" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Tra_Gop__sanpham__719CDDE7" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Bao_Hanh__giamgi__0D44F85C" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Bao_Hanh__sanpha__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__40058253" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__5AB9788F" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__6166761E" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__chi_tiet___sanph__498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__danh_gia__sanpha__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__like_Danh__danhg__22401542" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__rep_danh___danhg__1D7B6025" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Danh_Gia___nha_C__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Danh_Muc___Danh___31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__sanpham__Danh_Mu__3864608B" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Dat_Hang__giamgi__01D345B0" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Dat_Hang__sanpha__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__Gioi_Thie__sanph__76619304" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__hang_cho__giamgi__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__hang_cho__sanpha__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__like_Rep___like___2704CA5F" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__magiamgia__Ma_sa__671F4F74" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__nhacungCa__idncc__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="bandiDongModel.FK__sanpham__nhacung__395884C4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,70 @@
+﻿@using DiDongTrongToi.Models;
+@model sanpham
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+<div style="color:red">
+    @Html.ValidationSummary(false, "", "Error")
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2 " style="margin-top:2%;">
+            @{
+                bandiDongEntities db = new bandiDongEntities();
+                var ddd = db.Danh_Muc_Theo_Chu_De.ToList();
+                foreach (var i in ddd)
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @i.ten_chu_de
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @{var ddd1 = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == i.id).ToList();
+                                    foreach (var i1 in ddd1)
+                                    {
+                                        <a class="dropdown-item ChonChungLoai" data-id="@i1.id">@i1.ten_chung_Loai</a>
+                                    }
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                }
+            }
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9 col-xl-10 " style="margin-top:2%;">
+            <div class="card">
+                <h5 class="card-heard">Tạo Mới Sản Phẩm</h5>
+                <div class="card-body">
+                    <style>
+                        .khung {
+                            width: 60%;
+                            margin-bottom: 0.4em;
+                            margin-right: 40%;
+                        }
+
+                        .andinhe {
+                            display: none;
+                        }
+                    </style>
+                    @using (Html.BeginForm("PSA", "AddProduct", FormMethod.Post))
+                    {
+                        @Html.TextBoxFor(model => model.ten, new { @type = "text", @placeholder = "Tên Của Sản Phẩm", @class = "khung" })
+                        @Html.TextBoxFor(model => model.gia, new { @type = "number", @placeholder = "Giá Sản Phẩm", @class = "khung" })
+                        @Html.TextBoxFor(model => model.soLuong, new { @type = "number", @placeholder = "Số Lượng", @class = "khung" })
+                        @Html.TextBoxFor(model => model.soLuongconlai, new { @type = "number", @placeholder = "Số Lượng Còn Lại", @class = "khung" })
+                        @Html.TextBoxFor(model => model.bao_hanh, new { @type = "number", @placeholder = "Thời Gian Bảo Hành (Tháng)", @class = "khung" })
+                        @Html.TextBoxFor(model => model.Danh_Muc_Theo_Chung_loai, new { @type = "number", @id = "chungLoaiSanPham", @placeholder = "Chủ Đề Sản phẩm", @class = "khung andinhe" })
+                        <button class="btn btn-success">Tạo Mới Sản Phẩm</button>
+                    }
+                    <div style="width:100%;">
+                        <a style="float:right;">Go Home</a>
+                        <a style="float:left;">Tiếp Theo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

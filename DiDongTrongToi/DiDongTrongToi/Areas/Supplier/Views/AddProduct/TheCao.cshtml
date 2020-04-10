@@ -1,0 +1,36 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_The_cao
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm  Thẻ điện thoại hoặc là thêm số điện thoại
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("TheCao","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.SimOrThe, new { @type = "number", @placeholder = "Lựa chọn sản Phâm 1 là thẻ cào 2 là số điện thoại", @max = "2", @min = "1", @class = "khung" })
+            @Html.TextBoxFor(model => model.sdt, new { @type = "number", @placeholder = "Số Điện Thoại", @class = "khung" })
+            @Html.TextBoxFor(model => model.maThe, new { @type = "number", @placeholder = "Mã Thẻ", @class = "khung" })
+            @Html.TextBoxFor(model => model.seri, new { @type = "number", @placeholder = "Seri", @class = "khung" })
+            @Html.TextBoxFor(model => model.menhGia, new { @type = "number", @placeholder = "Mệnh Giá", @class = "khung" })
+            @Html.TextBoxFor(model => model.NhaMang, new { @type = "text", @placeholder = "Nhà MẠng", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_tainghe
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm tai nghe và loa
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("TaiNghe","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.chungLoai, new { @type = "number", @placeholder = "Chọn 1 tai nghe có dây 2 tai nghe không dây 3 loa có dây 4 loa không dây", @max = "4", @min = "1", @class = "khung" })
+            @Html.TextBoxFor(model => model.TuongThich, new { @type = "text", @placeholder = "Tương Thích", @class = "khung" })
+            @Html.TextBoxFor(model => model.congXuat, new { @type = "number", @placeholder = "Công xuất", @class = "khung" })
+            @Html.TextBoxFor(model => model.cachKetNoi, new { @type = "text", @placeholder = "Cách Kết Nối", @class = "khung" })
+            @Html.TextBoxFor(model => model.PhimDieuKhien, new { @type = "text", @placeholder = "Phím điều khiển", @class = "khung" })
+            @Html.TextBoxFor(model => model.TinhNangKhac, new { @type = "text", @placeholder = "Tính Năng KHác", @class = "khung" })
+            @Html.TextBoxFor(model => model.KhoangCachBluetooth, new { @type = "number", @placeholder = "Khoẳng Cách Kết Nối BlueTooth", @class = "khung" })
+            @Html.TextBoxFor(model => model.kichThuocSieuTram, new { @type = "text", @placeholder = "Kích Thước Siêu Trầm", @class = "khung" })
+            @Html.TextBoxFor(model => model.KichThuocVeTinh, new { @type = "text", @placeholder = "Kích thước vệ tinh", @class = "khung" })
+            @Html.TextBoxFor(model => model.trongLuong, new { @type = "text", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.thuongHieu, new { @type = "text", @placeholder = "Thương Hiệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.XuatSu, new { @type = "text", @placeholder = "Xuất Sứ", @class = "khung" })
+            @Html.TextBoxFor(model => model.BoBanHangChuan, new { @type = "text", @placeholder = "Bộ Bán Hàng Chuẩn", @class = "khung" })
+            @Html.TextBoxFor(model => model.CongSac, new { @type = "text", @placeholder = "Cổng Sạc", @class = "khung" })
+            @Html.TextBoxFor(model => model.ThoiGianSuDung, new { @type = "number", @placeholder = "Thời Gian Sử Dụng", @class = "khung" })
+            @Html.TextBoxFor(model => model.KetNoiCungLuc, new { @type = "number", @placeholder = "Kết Nối Cùng Lúc", @class = "khung" })
+            @Html.TextBoxFor(model => model.ThoiGianXacDay, new { @type = "number", @placeholder = "Thời Gian Sạc Đầy", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

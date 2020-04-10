@@ -1,0 +1,111 @@
+﻿@using DiDongTrongToi.Models;
+@using DiDongTrongToi.Models.Login;
+@model List<hang_cho>
+@{
+    bandiDongEntities db = new bandiDongEntities();
+    ViewBag.Title = "SanPhamCuaToi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card" style="width:98%; margin-left:1%;">
+    <h5 class="card-header">
+        Sản Phẩm Của Bạn
+    </h5>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr style="text-align:center;">
+                    <th scope="col">Mã</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Mã Giảm Giá</th>
+                    <th scope="col">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null)
+                {
+                    <h1>Không Có Sản Phẩm Nào</h1>
+                }
+                else
+                {
+                    foreach (var i in Model)
+                    {
+                        <tr style="text-align:center;">
+                            <td style="width:5%;">@i.id</td>
+                            @{
+                                var sanpham = db.sanphams.Where(k => k.id == i.sanpham).FirstOrDefault();
+                            }
+                            <td style="width:10%;"><img style="width:90%; margin-left:5%;" src="@db.anhsanphams.Where(m => m.id ==sanpham.anhsanpham).FirstOrDefault().anh1" /></td>
+                            <td style="width:20%;">@sanpham.ten</td>
+                            <td style="width:10%;">
+                                @if (sanpham.magiamgias != null)
+                                {
+                                    <b>Giá Gốc:</b>
+                                }
+                                <br /> <b>Giá Hiện tại:</b>@sanpham.gia
+                            </td>
+                            <td style="width:15%;">
+                                <nav aria-label="Page navigation example">
+                                    <input type="number" id="SoLuong_@i.id" style="height:50px; width:50%; font-size:150%; border:5px #0094ff solid" value="0" max="100" min="0" />
+                                </nav>
+                            </td>
+                            <td style="width:15%;">
+                                <nav aria-label="Page navigation example">
+                                    <input type="text" style="height:50px; width:50%; font-size:120%;" class="MaGiamGiaSanPham" id="MaGiamGia_@i.id" placeholder="Mã Giảm Giá" />
+                                </nav>
+                            </td>
+                            <td style="width:15%;">
+                                <button class="btn btn-success MuaSanPham" data-id="@i.id"><i class="fa fa-edit">Mua</i></button>
+                                <a href="@Url.Action("XoaSanPham","MyCart",new {idsanpham=i.id})" class="btn btn-danger xoaSanPham"><i class="fa fa-eraser">Xóa</i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="@Url.Action("MyProduct", "MyProduct")" class="btn btn-success">Sản Phẩm Đang Mua</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="margin-top:2%;">
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Sản Phầm Của Nhà Cung Cấp
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{
+                                var taikhoan = (Login)Session[SessionLogin.sec];
+                                var thongTin = db.thongTins.Where(m => m.taikhoan == taikhoan.taiKhoan).FirstOrDefault().id;
+                                var nhacungCap = db.nhacungCaps.Where(m => m.idncc == thongTin).FirstOrDefault().id;
+                                var sanPhamCuaNHacungCapNay = db.sanphams.OrderByDescending(n => n.bao_hanh).Where(m => m.nhacungCap == nhacungCap).Take(10);
+                            }
+                            @foreach (var ibg in sanPhamCuaNHacungCapNay)
+                            {
+                                var giamgia = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == ibg.id && ibg.daxoa == false);
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                    <div class="anhnho">
+                                        @if (giamgia.Count() != 0)
+                                        {
+                                            <div class="GiamGia">Giảm:@giamgia.FirstOrDefault().phan_Tram</div>
+                                            <div class="MaGiamGia">Mã:@giamgia.FirstOrDefault().id</div>
+                                        }
+                                        <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                        <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == ibg.anhsanpham).FirstOrDefault().anh1" alt="@ibg.ten">
+                                    </div>
+                                    <div class="TesnanPham">@ibg.ten</div>
+                                    <div class="GiaSanPham">@ibg.gia</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>          
+        </div>
+    </div>
+</div>

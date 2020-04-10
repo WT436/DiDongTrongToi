@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "SanPhamDangGiao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card" style="width:100%; background:#f2d073; color:black;">
+    <h5 class="card-header">
+        Thông Tin Cá Nhân
+    </h5>
+    <div class="card-body">
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <td rowspan="3" style="width:20%;"><img style="width:80%; height:auto; border-radius:100%; margin:10%;" src="~/Content/IMG/avatar.png" /></td>
+                    <td><i class="fa fa-user"></i>Tên : Nam deptrai</td>
+                    <td><i class="fa fa-sun-o"></i>Tuổi : 20</td>
+                    <td><i class="fa fa-phone"></i>SDT : 0392516308</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-sign-in"></i>Tài Khoản : MeoDongBim</td>
+                    <td><i class="fa fa-shield"></i>Mật Khẩu : ***********   <i class="fa fa-eye-slash"></i></td>
+                    <td><i class="fa fa-envelope-o"></i>Email:hainam1507x@gmail.com</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><i class="fa fa-map-marker"></i>Địa Chỉ : 60/122 đường xuân phương tu hoàng nhổn nam từ liêm hà nội</td>
+                </tr>
+                <tr style="text-align:center">
+                    <td><a href="#" class="btn btn-danger"><i class="fa fa-edit">Sửa Ảnh </i></a></td>
+                    <td><a href="#" class="btn btn-danger"><i class="fa fa-edit">Sửa Thông Tin </i></a></td>
+                    <td><a href="#" class="btn btn-danger"><i class="fa fa-retweet">Đổi Mật Khẩu </i></a></td>
+                    <td><a href="#" class="btn btn-danger"><i class="fa fa-history">Lịch sử</i></a></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card" style="width:90%; margin-left:5%;">
+    <h5 class="card-header">
+       Lịch sử Sản Phẩm Của Bạn
+    </h5>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr style="text-align:center;">
+                    <th scope="col">Mã</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>               
+                <tr style="text-align:center;">
+                    <td style="width:10%;">Mark</td>
+                    <td style="width:10%;"><img style="width:90%; margin-left:5%;" src="~/Content/IMG/avatar.png" /></td>
+                    <td style="width:30%;">mdo</td>
+                    <td style="width:10%;"><b>Giá Gốc:</b> 10000000 <br /> <b>Giá Hiện tại:</b> 100000000000</td>
+                    <td style="width:10%;">Otto</td>
+                    <td style="width:30%;">
+                        <a href="#" class="btn btn-success"><i class="fa fa-edit">Mua</i></a>
+                        <a href="#" class="btn btn-primary"><i class="fa fa-eye">Xem</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

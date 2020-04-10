@@ -1,0 +1,363 @@
+﻿@using DiDongTrongToi.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<danh_gia>
+@{
+    bandiDongEntities db = new bandiDongEntities();
+    int masanpham = ViewBag.maSanPham;
+    var sanpham = db.sanphams.Where(n => n.id == masanpham).FirstOrDefault();
+    var anhsanPham = db.anhsanphams.Where(m => m.id == sanpham.anhsanpham).FirstOrDefault();
+}
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Home/css/chiTiet.css" rel="stylesheet" />
+<nav aria-label="breadcrumb">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+<div style="float:left; width:100%; line-height: 40px; font-size:150%; ">
+    <b><i>@sanpham.ten</i></b>
+</div>
+<hr />
+<div class="container-full">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <div class="hoverimage">
+                <img id="anhChinh" style="height:auto; width:100%;" src="@anhsanPham.anh1" />
+                <style>
+                    .hoverimage img {
+                        -webkit-transform: scale(0.9); /*Webkit: Thu nhỏ kích thước ảnh còn 0.8 so với ảnh gốc*/
+                        -moz-transform: scale(0.9); /*Thu nhỏ đối với Mozilla*/
+                        -o-transform: scale(0.9); /*Thu nhỏ đối với Opera*/
+                        -webkit-transition-duration: 0.5s; /*Webkit: Thời gian phóng to, nhỏ ảnh*/
+                        -moz-transition-duration: 0.5s; /*Như trên*/
+                        -o-transition-duration: 0.5s; /*Như trên*/
+                        opacity: 1; /*Độ mờ của hình ảnh*/
+                        margin: 0 10px 5px 0; /*căn đều giữa ảnh*/
+                        z-index: 100;
+                        border-radius: 2px;
+                    }
+
+                    .hoverimage:hover img {
+                        margin-left: 10%;
+                        -webkit-transform: scale(1.2); /*Webkit: Tăng kích cỡ ảnh lên 1.1 lần*/
+                        -moz-transform: scale(1.1);
+                        -o-transform: scale(1.1);
+                        box-shadow: 0px 0px 30px gray; /*Đổ bóng bằng CSS3*/
+                        -webkit-box-shadow: 0px 0px 30px gray;
+                        -moz-box-shadow: 0px 0px 30px gray;
+                        opacity: 1; /*Độ mờ của hình ảnh*/
+                        z-index: 100;
+                        border-radius: 4px;
+                    }
+                </style>
+            </div>
+            <div>
+                <nav aria-label="Page navigation example" style="margin-left:5%;">
+                    <ul class="pagination">
+                        @{
+
+                            <li class="page-item"><a class="page-link"><img id="phuimg1" style="height:30px; width:30px;" src="@anhsanPham.anh1" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                            <li class="page-item"><a class="page-link"><img id="phuimg2" style="height:30px; width:30px;" src="@anhsanPham.anh2" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                            <li class="page-item"><a class="page-link"><img id="phuimg3" style="height:30px; width:30px;" src="@anhsanPham.anh3" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                            <li class="page-item"><a class="page-link"><img id="phuimg4" style="height:30px; width:30px;" src="@anhsanPham.anh5" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                            <li class="page-item"><a class="page-link"><img id="phuimg5" style="height:30px; width:30px;" src="@anhsanPham.anh6" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                            <li class="page-item"><a class="page-link"><img id="phuimg6" style="height:30px; width:30px;" src="@anhsanPham.anh7" alt="@sanpham.ten" class="rounded-sm "></a></li>
+                        }
+
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="font-size:150%; color:#f59595"><b><i>Thông Tin Cơ Bản</i></b></td>
+                    </tr>
+                    <tr>
+                        <td>Mã</td>
+                        <td>@sanpham.id</td>
+                    </tr>
+                    <tr>
+                        <td>Giá</td>
+                        <td>@sanpham.gia</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Sản Phẩm</td>
+
+                        <td>@sanpham.soLuong</td>
+                    </tr>
+                    <tr>
+                        <td>Số Lượng còn lại</td>
+                        <td>@sanpham.soLuongconlai</td>
+                    </tr>
+                    <tr>
+                        <td>Bảo Hành</td>
+                        <td>@sanpham.bao_hanh</td>
+                    </tr>
+                    <tr>
+                        @{
+                            var tenloai = db.Danh_Muc_Theo_Chung_loai.Where(n => n.id == sanpham.Danh_Muc_Theo_Chung_loai).FirstOrDefault().ten_chung_Loai;
+
+                        }
+                        <td>Danh Mục</td>
+                        <td>@tenloai</td>
+                    </tr>
+                    <tr>
+                        @{
+                            var tenNhaCungCap = db.nhacungCaps.Where(k => k.id == sanpham.nhacungCap).FirstOrDefault();
+                        }
+                        <td>Nhà Cung Cấp</td>
+                        <td>@tenNhaCungCap.TenTrang</td>
+                    </tr>
+                    <tr>
+                        <td style=" color:#000000"><a href="@Url.Action("SanPhamCuaToi","MyCart", new {a=sanpham.id})" class="btn btn-primary">Thêm Giỏ Hàng</a></td>
+                        <td style=" color:#000000"><a href="@Url.Action("Index","ChiTietSanPham", new {ma=sanpham.id})" class="btn btn-success">Thông Tin Chi Tiết</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div style="width:100%; height:17.5em; border-radius:3px; border:red 1px solid">
+                <div style="width:100%; height:150px; margin-left:5%;">
+                    <div style="width:50%;">
+                        <img style="width:100px; float:left; height:100px; border-radius:100%; margin:30px;" src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" />
+                    </div>
+
+                    <div style="width:50%; float:left; text-align:left; margin-top:10%;">
+                        <b style="font-size:130%; margin-bottom:30px;"><i class="fa fa-shopping-basket" style="margin-right:5px;">Shop Tran Nam</i></b>
+                        <button class="btn btn-success">Xem Shop</button>
+                    </div>
+                </div>
+                <div style="width:100%; height:130px; float :left;">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Sản Phẩm</td>
+                                <td>Otto</td>
+                                <td>Đánh Giá</td>
+                                <td>the Bird</td>
+                            </tr>
+                            <tr>
+                                <td>Người Theo Dõi</td>
+                                <td>Thornton</td>
+                                <td>Tham Gia</td>
+                                <td>the Bird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-full">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+            <div class="card" style="width:90%; margin-left:10%;">
+                <h5 class="card-header">
+                    Đánh Giá
+                </h5>
+                <div class="card-body">
+                    <table style="width:100%;">
+                        <tbody style="width:100%;">
+                            @{
+                                var tongDanhGia = db.danh_gia.Where(o => o.sanpham == sanpham.id).Count();
+                                var DanhGia1s = db.danh_gia.Where(o => o.sanpham == sanpham.id && o.soSao == 1).Count();
+                                var DanhGia2s = db.danh_gia.Where(o => o.sanpham == sanpham.id && o.soSao == 2).Count();
+                                var DanhGia3s = db.danh_gia.Where(o => o.sanpham == sanpham.id && o.soSao == 3).Count();
+                                var DanhGia4s = db.danh_gia.Where(o => o.sanpham == sanpham.id && o.soSao == 4).Count();
+                                var DanhGia5s = db.danh_gia.Where(o => o.sanpham == sanpham.id && o.soSao == 5).Count();
+                                string theHienDanhGia1s;
+                                string theHienDanhGia2s;
+                                string theHienDanhGia3s;
+                                string theHienDanhGia4s;
+                                string theHienDanhGia5s;
+                                if (tongDanhGia == 0)
+                                {
+                                    theHienDanhGia1s = "0%";
+                                    theHienDanhGia2s = "0%";
+                                    theHienDanhGia3s = "0%";
+                                    theHienDanhGia4s = "0%";
+                                    theHienDanhGia5s = "0%";
+                                }
+                                else
+                                {
+                                    theHienDanhGia1s = ((DanhGia1s*100) / tongDanhGia).ToString() + "%";
+                                    theHienDanhGia2s = ((DanhGia2s*100) / tongDanhGia).ToString() + "%";
+                                    theHienDanhGia3s = ((DanhGia3s*100) / tongDanhGia).ToString() + "%";
+                                    theHienDanhGia4s = ((DanhGia4s*100) / tongDanhGia).ToString() + "%";
+                                    theHienDanhGia5s = ((DanhGia5s*100) / tongDanhGia).ToString() + "%";
+                                }
+
+                            }
+                            <tr style="width:100%;">
+                                <td style="width:100%; margin-right:3%; text-align:center;" class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:@theHienDanhGia5s" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </td>
+                                <td style="width:15%; color:gold; margin-right:3%; text-align:center;">
+                                    5<i class="fa fa-star"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia5s<i class="fa fa-user"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia5s/@tongDanhGia
+                                </td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:100%; margin-right:3%; text-align:center;" class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:@theHienDanhGia4s" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </td>
+                                <td style="width:15%; color:gold; margin-right:3%; text-align:center;">
+                                    4<i class="fa fa-star"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia4s<i class="fa fa-user"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia4s/@tongDanhGia
+                                </td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:100%; margin-right:3%; text-align:center;" class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:@theHienDanhGia3s" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </td>
+                                <td style="width:15%; color:gold; margin-right:3%; text-align:center;">
+                                    3<i class="fa fa-star"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia3s<i class="fa fa-user"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia3s/@tongDanhGia
+                                </td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:100%; margin-right:3%; text-align:center;" class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:@theHienDanhGia2s" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </td>
+                                <td style="width:15%; color:gold; margin-right:3%; text-align:center;">
+                                    2<i class="fa fa-star"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia2s<i class="fa fa-user"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia2s/@tongDanhGia
+                                </td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:100%; margin-right:3%; text-align:center;" class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:@theHienDanhGia1s" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </td>
+                                <td style="width:15%; color:gold; margin-right:3%; text-align:center;">
+                                    1<i class="fa fa-star"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia1s<i class="fa fa-user"></i>
+                                </td>
+                                <td style="width:15%; margin-right:3%; text-align:center;">
+                                    @DanhGia5s/@tongDanhGia
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card" style="width:90%; margin-left:10%;">
+                <h5 class="card-header">
+                    Gửi Đánh Giá
+                </h5>
+                <div class="card-body">
+                    <div style="width: 100%; margin-left:10px; float:left;">
+                        <b>Số Sao Của bạn :</b>
+                        <i id="sao1" class="fa fa-star"></i>
+                        <i id="sao2" class="fa fa-star"></i>
+                        <i id="sao3" class="fa fa-star"></i>
+                        <i id="sao4" class="fa fa-star"></i>
+                        <i id="sao5" class="fa fa-star"></i>
+                    </div>
+                    <from>
+                     <input type="text" id="layComMent" style="width: 100%;">                        
+                        <div style="width: 100%;">
+                            <a href="#"> Quy Định Đăng Bình Luận</a>
+                            <a class="btn btn-success" id="GuiDuaLieu" data-id="@sanpham.id" style="float:right;">Gửi</a>
+                        </div>
+                    </from>
+                </div>
+            </div>
+            <div class="card" style="width:90%; margin-left:10%;">
+                <h5 class="card-header">
+                    Bình Luận
+                </h5>
+                <div class="card-body">
+                    @foreach (var i in Model)
+                    {
+                        <div class="BinhLuanTo">
+                            <hr />
+                            <div class="NameAndAvataComment">
+
+                                <img class="AvataBinhLuan" src="@db.thongTins.Where(m => m.taikhoan == i.acc).FirstOrDefault().avatar" />
+                                <i>
+                                    @db.thongTins.Where(m => m.taikhoan == i.acc).FirstOrDefault().ten
+                                    @for (int k = 0; k < i.soSao; k++)
+                                    {
+                                        <i style="color:gold" class="fa fa-star"></i>
+                                    }
+                                </i>
+                            </div>
+                            <br />
+                            <i class="CommentForYou">@i.noidung</i>
+                            <div>
+                                @{ 
+                                    var like = db.like_DanhGia.Where(m => m.danhgia == i.id&& m.C_like==true).Count();
+                                    var Dislike = db.like_DanhGia.Where(m => m.danhgia == i.id&& m.dislike==true).Count(); 
+                                }
+                                <a  class="Thichcl" style="color:#3160f8; cursor:pointer;" data-id="@i.id"><i class="fa fa-thumbs-o-up"></i>Thích(@like)</a>
+                                <a  class="DisThichcl" style="color:#3160f8; cursor:pointer;" data-id="@i.id"> <i class="fa fa-thumbs-o-down "></i>Không Thích(@Dislike)</a>
+                                <a  class="Repcl" style="color:#3160f8; cursor:pointer;" data-id="@i.id"><i class="fa fa-comment-o "></i>Trả Lời</a>
+                                <a  class="Repcl" style="color:#3160f8; cursor:pointer;"  data-id="@i.id"><i class="fa fa-angle-double-down "></i>Bình Luận</a>
+                            </div>
+                            <div class="NoidungBinhLuan" id="CommentDanhGia_@i.id" style="display:none; height:auto;">
+                                <div class="MuiTen"></div>
+
+                                @{
+                                    var traLoiComMent = db.rep_danh_Gia.Where(n => n.danhgia == i.id).ToList();
+                                    foreach (var ii in traLoiComMent)
+                                    {
+                                        <div class="NameAndAvataComment">
+                                            <img class="AvataBinhLuan" src="@db.thongTins.Where(m => m.taikhoan == ii.acc).FirstOrDefault().avatar" />
+                                            <i>@db.thongTins.Where(m => m.taikhoan == ii.acc).FirstOrDefault().ten</i>
+                                        </div>
+                                        <br />
+                                        <i class="CommentForYou">@ii.noidung</i>
+                                        <hr />
+                                    }
+                                }
+                                <from>                                   
+                                    <div style="width: 100%;">
+                                        <input type="text" id="CommentCuaDanhGia_@i.id" style="width: 70%;">
+                                        <a class="btn btn-success GuiCommentDanhGia" data-id="@i.id" style="float:right;">Gửi</a>
+                                    </div>
+                                </from>
+                            </div>
+                        </div>
+                    }
+                    @Html.PagedListPager(Model,Page=>Url.Action("ChiTietSanPham",new {Page}))
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            san pham lien quan
+        </div>
+    </div>
+</div>

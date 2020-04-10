@@ -1,0 +1,210 @@
+﻿@using DiDongTrongToi.Models;
+@using DiDongTrongToi.Models.Login;
+@{
+    bandiDongEntities db = new bandiDongEntities();
+    if (Session[SessionLogin.sec] == null)
+    {
+        ViewBag.adf = "chuaDangNhap";
+    }
+    else
+    {
+        var a = (Login)Session[SessionLogin.sec];
+        ViewBag.adf = a.taiKhoan;
+    }
+}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Di Động Trong Tôi</title>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--//tags -->
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Home/css/Home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+
+<body style=" background-color:#e9e7e7">
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:coral; border: 1px solid black; position: fixed; width:100%; top:0px;z-index:200; ">
+        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+            <img src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" style="height: 3em; width: 12em;" alt="...">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon " style="color: black;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active navStyle " style="font-size: 80%;">
+                    <a class="nav-link " href="@Url.Action("Index","Home")">
+                        <i class="fa fa-2x fa-home"></i><br />
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-mobile-phone"></i><br /> Điện Thoại
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Phone","Home")">Điện Thoại Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucDienThoai = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 1).ToList();
+                            foreach (var ik in DanhMucDienThoai)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Phone","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-tablet"></i><br />Table
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Tablet","Home")">Tablet Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucTablet = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 2).ToList();
+                            foreach (var ik in DanhMucTablet)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Tablet","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-laptop"></i><br />Máy Tính
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Computer","Home")">Máy Tính Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucComputer = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 3).ToList();
+                            foreach (var ik in DanhMucComputer)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Tablet","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-headphones"></i><br />Phụ Kiện
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("accessories","Home")">Phụ Kiện Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucaccessories = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 4).ToList();
+                            foreach (var ik in DanhMucaccessories)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Tablet","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-clock-o"></i><br />Đồng Hồ
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Watch","Home")">Đồng Hồ Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucWatch = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 5).ToList();
+                            foreach (var ik in DanhMucWatch)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Tablet","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item dropdown navStyle " style="font-size: 80%;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-id-card"></i><br />Sim Thẻ
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Watch","Home")">Đồng Hồ Chung</a>
+                        <div class="dropdown-divider"></div>
+                        @{
+                            var DanhMucCard = db.Danh_Muc_Theo_Chung_loai.Where(n => n.Danh_Muc_Theo_Chu_De == 6).ToList();
+                            foreach (var ik in DanhMucCard)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Card","Home", new {id=ik.Danh_Muc_Theo_Chu_De})">@ik.ten_chung_Loai</a>
+                            }
+                        }
+                    </div>
+                </li>
+                <li class="nav-item navStyle " style="font-size: 80%;">
+                    <a class="nav-link " href="#"><i class="fa fa-2x fa-cart-plus"></i><br />Giỏ Hàng</a>
+                </li>
+                <li class="nav-item navStyle " style="font-size: 80%;">
+                    <a class="nav-link " href="#">
+                        @if (ViewBag.adf == null)
+                        {
+                            <i class="fa fa-2x fa-user"></i>
+                            <br />
+                        }
+                        else
+                        {
+                            string TaiKHoan = Convert.ToString(ViewBag.adf);
+                            var img = db.thongTins.Where(n => n.taikhoan == TaiKHoan).FirstOrDefault();
+                            if (img == null)
+                            {
+                                <i class="fa fa-2x fa-user"></i>
+                                <br />
+                            }
+                            else
+                            {
+                                <img src="@img.avatar" style="height:2em; width:2em; border-radius:100%;" />
+                                <br />
+                            }
+                        }
+                        Đăng Nhập
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="clear:both"></div>
+    <div style="margin-top:100px;"></div>
+    @RenderBody()
+    <div class="clearfix"></div>
+    <footer style="bottom:0; background-color:coral; width:100%; text-align:center;">
+        © 2019.Di động Trong Tôi - designer <a href="#">HaiNam</a>
+    </footer>
+    <!-- //navigation -->
+    <!-- smoothscroll -->
+    <script src="~/Content/Home/js/SmoothScroll.min.js"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="~/Areas/Content/Supplier.js"></script>
+
+</body>
+
+</html>

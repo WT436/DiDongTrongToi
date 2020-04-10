@@ -1,0 +1,41 @@
+﻿
+@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_ThietBiMang
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm WiFI Hoặc Cục Mạng
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("ThietBiMang","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.loai, new { @type = "number", @placeholder = "Lựa chọn sản phẩm phù hợp 1 là WIFI USB 2 là cục mạng", @max = "2", @min = "1", @class = "khung" })
+            @Html.TextBoxFor(model => model.tocDo, new { @type = "number", @placeholder = "Tốc độ tối đa", @class = "khung" })
+            @Html.TextBoxFor(model => model.bangTan, new { @type = "number", @placeholder = "Băng Tần", @class = "khung" })
+            @Html.TextBoxFor(model => model.cacCongKetNoi, new { @type = "text", @placeholder = "Các Cổng Kết Nối", @class = "khung" })
+            @Html.TextBoxFor(model => model.DenBaoHieu, new { @type = "text", @placeholder = "Đèn Báo hiệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.soAngTen, new { @type = "text", @placeholder = "Số ĂngTen", @class = "khung" })
+            @Html.TextBoxFor(model => model.TruyCapToiDa, new { @type = "number", @placeholder = "Truy Cập Tối Đa", @class = "khung" })
+            @Html.TextBoxFor(model => model.DoPhuSong, new { @type = "number", @placeholder = "Độ Phủ Sóng", @class = "khung" })
+            @Html.TextBoxFor(model => model.NutBamHoTro, new { @type = "text", @placeholder = "Nút Bấm Hỗ Trợ", @class = "khung" })
+            @Html.TextBoxFor(model => model.mauSac, new { @type = "text", @placeholder = "Màu Sắc", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>

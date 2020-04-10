@@ -1,0 +1,405 @@
+﻿@using PagedList.Mvc;
+@using DiDongTrongToi.Models;
+@model PagedList.IPagedList<sanpham>
+@{
+    bandiDongEntities db = new bandiDongEntities();
+    ViewBag.Title = "gf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="meozzzz" style="height:50px; width:50px; margin-top:100px; position:fixed; z-index:200; float:right;">
+    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" data-toggle="modal" data-target="#exampleModalLong">
+        <i class="fa fa-2x fa-search"></i>
+    </a>
+</div>
+<div style="height:50px; width:50px; margin-top:100px; right:0px; bottom:30px; position:fixed; z-index:200; float:right;">
+    <a href="#hainam">
+        <i class="fa fa-2x fa-upload"></i>
+    </a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">TÌm Kiếm Theo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-box">
+                    <input type="text" class="search-txt" name="" placeholder="Tìm Kiếm Sản Phẩm" />
+                    <a class="search-btn" href="#">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-full" style="margin-top:90px;height:100%;">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" style="background-color: rgba(0, 0, 0, 0.623); height: 10px; width: 10px; border-radius: 100%;" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1" style="background-color: rgba(0, 0, 0, 0.623); height: 10px; width: 10px; border-radius: 100%;"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2" style="background-color: rgba(0, 0, 0, 0.623); height: 10px; width: 10px; border-radius: 100%;"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @{
+                        int dauTien = 0;
+                        var hgu = db.F_LaySanPhamNoiBatChung(8).ToList();
+                        foreach (var hhh in hgu)
+                        {
+                            if (dauTien == 0)
+                            {
+                                <div class="carousel-item active">
+                                    <img src="@db.anhsanphams.Where(n => n.id == hhh.anhsanpham).FirstOrDefault().anh1" style="height: 400px; width: 100%;" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <a href="#" name="hainam"><div class="carousel-name1" style="font-size:220%;font-family:'Agency FB';color:hotpink;">@hhh.ten</div></a>
+                                        <marquee class="carousel-name2" style="font-size:120%;font-family:'Agency FB';color:#e9e7e7;">Giá : @hhh.gia Số LƯợng còn lại : @hhh.soLuongconlai Thời Gian Bảo Hành :@hhh.bao_hanh</marquee>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item ">
+                                    <img src="@db.anhsanphams.Where(n => n.id == hhh.anhsanpham).FirstOrDefault().anh1" style="height: 400px; width: 100%;" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <a href="#" name="hainam"><div class="carousel-name1" style="font-size:220%;font-family:'Agency FB';color:hotpink;">@hhh.ten</div></a>
+                                        <marquee class="carousel-name2" style="font-size:120%;font-family:'Agency FB';color:#e9e7e7;">Giá : @hhh.gia Số LƯợng còn lại : @hhh.soLuongconlai Thời Gian Bảo Hành :@hhh.bao_hanh</marquee>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" style="background-color: rgba(0, 0, 0, 0.397); height: 30px; width: 30px; border-radius: 100%;" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" style="background-color: rgba(0, 0, 0, 0.397);
+                                                                    height: 30px;
+                                                                    width: 30px;
+                                                                    border-radius: 100%;" aria-hidden="true">
+
+                    </span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12  col-lg-4 col-xl-4">
+            <div class="container-full">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-12 col-xl-12 " style="margin-top:2%;">
+                        <img src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" style="height: 190px; width: 97%;" alt="...">
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-12 col-xl-12 " style="margin-top:2%;">
+                        <img src="~/Content/Home/img/WIN_20191213_01_15_11_Pro.jpg" style="height: 190px; width: 97%;" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="QuangCao"></div>
+<style>
+    #QuangCao {
+        display: none;
+        height: 4em;
+        width: 90%;
+        background-color: yellow;
+        margin: 10px 5% 0 5%;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 " style="margin-top:2%;">
+            Quang Cao
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 " style="margin-top:2%;">
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Sản Phẩm Hôm Nay
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var SanPhamHomNay = db.F_layNgauNhienSanPham(12).ToList();
+                                foreach (var h1 in SanPhamHomNay)
+                                {
+                                    var giamgia = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div>
+                <div style="width:100%; height:30px;text-align:center;border:solid 1px red; border-radius:100% 100% 0 0;">SẢN PHẨM NỔI BẬT</div>
+                <div class="marquee">
+                    <ul class="marquee-content">
+                        @{
+                            var abz = db.F_LaySanPhamNoiBatChung(10).ToList();
+                            foreach (var h2 in abz)
+                            {
+                                var giamgia2 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h2.id && h2.daxoa == false);
+                                <li>
+                                    <div class="anhnho">
+                                        @if (giamgia2.Count() != 0)
+                                        {
+                                            <div class="GiamGia">Giảm:@giamgia2.FirstOrDefault().phan_Tram</div>
+                                            <div class="MaGiamGia">Mã:@giamgia2.FirstOrDefault().id</div>
+                                        }
+
+                                        <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                        <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h2.anhsanpham).FirstOrDefault().anh1" alt="@h2.ten">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="TesnanPham">@h2.ten</div>
+                                    <div class="GiaSanPham">@h2.gia</div>
+                                </li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Điện Thoại
+                    <a href="@Url.Action("Phone","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var DienThoaiHomNay = db.F_layNgauNhienSanPhamChungLoaiDienThoai(12).ToList();
+                                foreach (var h1 in SanPhamHomNay)
+                                {
+                                    var giamgia3 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia3.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia3.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia3.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Tablet
+                    <a href="@Url.Action("Tablet","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var TabletHomNay = db.F_layNgauNhienSanPhamChungLoaiTablet(12).ToList();
+                                foreach (var h1 in TabletHomNay)
+                                {
+                                    var giamgia4 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia4.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia4.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia4.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Máy Tính
+                    <a href="@Url.Action("Computer","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var MayTinhHomNay = db.F_layNgauNhienSanPhamChungLoaiMayTinh(12).ToList();
+                                foreach (var h1 in MayTinhHomNay)
+                                {
+                                    var giamgia5 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia5.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia5.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia5.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Phụ Kiện
+                    <a href="@Url.Action("accessories","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var PhuKienHomNay = db.F_layNgauNhienSanPhamChungLoaiPhuKien(12).ToList();
+                                foreach (var h1 in PhuKienHomNay)
+                                {
+                                    var giamgia6 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia6.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia6.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia6.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Đồng Hồ
+                    <a href="@Url.Action("Watch","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var DongHoHomNay = db.F_layNgauNhienSanPhamChungLoaiDongHo(12).ToList();
+                                foreach (var h1 in DongHoHomNay)
+                                {
+                                    var giamgia7 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia7.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia7.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia7.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" style=" margin:10px;"></div>
+            <div class="card" style="width:100%;">
+                <h5 class="card-header">
+                    Sim Thẻ
+                    <a href="@Url.Action("Card","Home")" class="btn btn-light">Xem Thêm</a>
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            @{//ở đây do nhìn nhận cơ sở dữ liệu chưa đúng  nên phải truy xuất rất nhiều lần làm tốn dung lượng và thời gian load sản phẩm
+                                var SimTheHomNay = db.F_layNgauNhienSanPhamChungLoaiSimThe(12).ToList();
+                                foreach (var h1 in SimTheHomNay)
+                                {
+                                    var giamgia8 = db.magiamgias.Where(n => n.chung == true && n.Ma_san_Pham == h1.id && h1.daxoa == false);
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="margin-top:2%;">
+                                        <div class="anhnho">
+                                            @if (giamgia8.Count() != 0)
+                                            {
+                                                <div class="GiamGia">Giảm:@giamgia8.FirstOrDefault().phan_Tram</div>
+                                                <div class="MaGiamGia">Mã:@giamgia8.FirstOrDefault().id</div>
+                                            }
+
+                                            <a class="" href="#"><i class=" cartt fa fa-2x fa-cart-plus"></i></a>
+                                            <img class="anhSanPham" src="..@db.anhsanphams.Where(n => n.id == h1.anhsanpham).FirstOrDefault().anh1" alt="@h1.ten">
+                                        </div>
+                                        <div class="TesnanPham">@h1.ten</div>
+                                        <div class="GiaSanPham">@h1.gia</div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 " style="margin-top:2%;">
+            quangcao
+        </div>
+    </div>
+</div>

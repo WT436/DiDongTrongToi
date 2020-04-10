@@ -1,0 +1,100 @@
+﻿@using DiDongTrongToi.Models;
+@model anhsanpham
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+    <div style="color:red">
+        @Html.ValidationSummary(false, "", "Error")
+    </div>
+<div>
+    <div class="card">
+        <h5 class="card-heard">Nhập Ảnh Của Sản Phẩm</h5>
+        <div class="card-body">
+            <table class="table table-sm">
+                <tr>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh1" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh1file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh1btn">Chọn Ảnh 1</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh2" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh2file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh2btn">Chọn Ảnh 2</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh3" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh3file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh3btn">Chọn Ảnh 3</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh5" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh5file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh5btn">Chọn Ảnh 5</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh6" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh6file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh6btn">Chọn Ảnh 6</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:25%;">
+                        <div class="card" style="width: 14rem;">
+                            <img id="ImgAnh7" src="~/Content/IMG/avatar.png" alt="..." class="img-thumbnail card-img-top">
+                            <div class="card-body">
+                                <input type="file" style="display:none" href="#" id="anh7file" class="btn btn-primary">
+                                <a class="btn btn-primary" id="anh7btn">Chọn Ảnh 7</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-right: 40%;
+                display: none;
+            }
+        </style>
+        <div style="width:100%;">
+            <a class="btn btn-danger" style="float:right;">Go Home</a>
+            <a class="btn btn-danger" style="float:left;">Tiếp Theo</a>
+        </div>
+        
+        @using (Html.BeginForm("ASP","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.anh1, new { @type = "text", @class = "khung", @id = "DataImg1" })
+            @Html.TextBoxFor(model => model.anh2, new { @type = "text", @class = "khung", @id = "DataImg2" })
+            @Html.TextBoxFor(model => model.anh3, new { @type = "text", @class = "khung", @id = "DataImg3" })
+            @Html.TextBoxFor(model => model.anh5, new { @type = "text", @class = "khung", @id = "DataImg5" })
+            @Html.TextBoxFor(model => model.anh6, new { @type = "text", @class = "khung", @id = "DataImg6" })
+            @Html.TextBoxFor(model => model.anh7, new { @type = "text", @class = "khung", @id = "DataImg7" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Tạo Mới Bộ Ảnh</button>
+        }
+    </div>
+</div>
+

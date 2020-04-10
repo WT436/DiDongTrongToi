@@ -1,0 +1,76 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_Dien_Thoai
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Supplier/Views/Shared/Supplier.cshtml";
+}
+<div class="card" style="width:70%; margin-left:15%;">
+    <h5 class="card-heard">
+        Nhập Thông Tin Cho sản Phẩm Điện Thoại
+    </h5>
+    <div class="card-body">
+        <style>
+            .khung {
+                width: 60%;
+                margin-bottom: 0.4em;
+                margin-left: 20%;
+            }
+
+            .hhh {
+                display: none;
+            }
+        </style>
+        @using (Html.BeginForm("DienThoai","AddProduct",FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.mau_Sac, new { @type = "text", @placeholder = "Màu Sắc", @class = "khung" })
+            @Html.TextBoxFor(model => model.man_hinh, new { @type = "text", @placeholder = "Màn Hình", @class = "khung" })
+            @Html.TextBoxFor(model => model.he_dieu_hanh, new { @type = "text", @placeholder = "Hệ Điều Hành", @class = "khung" })
+            @Html.TextBoxFor(model => model.camera_Truoc, new { @type = "text", @placeholder = "Camera trước", @class = "khung" })
+            @Html.TextBoxFor(model => model.camera_Sau, new { @type = "text", @placeholder = "Cammera sau", @class = "khung" })
+            @Html.TextBoxFor(model => model.Loi_san_Pham, new { @type = "text", @placeholder = "Lõi Sản Phẩm", @class = "khung" })
+            @Html.TextBoxFor(model => model.di_Kem, new { @type = "text", @placeholder = "Phụ Kiện Đi Kèm", @class = "khung" })
+            @Html.TextBoxFor(model => model.ram, new { @type = "text", @placeholder = "Ram", @class = "khung" })
+            @Html.TextBoxFor(model => model.cpu, new { @type = "text", @placeholder = "CPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.bo_nho, new { @type = "number", @placeholder = "Bộ Nhớ", @class = "khung" })
+            @Html.TextBoxFor(model => model.the_nho, new { @type = "text", @placeholder = "Thẻ Nhớ", @class = "khung" })
+            @Html.TextBoxFor(model => model.sim, new { @type = "text", @placeholder = "Hỗ Trợ SIM", @class = "khung" })
+            @Html.TextBoxFor(model => model.doPhanGiai, new { @type = "text", @placeholder = "Độ Phân Giải", @class = "khung" })
+            @Html.TextBoxFor(model => model.Man_Hinh_rong, new { @type = "text", @placeholder = "Màn Hình Rộng", @class = "khung" })
+            @Html.TextBoxFor(model => model.KinhCamUng, new { @type = "text", @placeholder = "Kính Cảm Ứng", @class = "khung" })
+            @Html.TextBoxFor(model => model.chipset, new { @type = "text", @placeholder = "ChipSet", @class = "khung" })
+            @Html.TextBoxFor(model => model.TocDocpu, new { @type = "text", @placeholder = "Tốc độ CPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.GPU, new { @type = "text", @placeholder = "GPU", @class = "khung" })
+            @Html.TextBoxFor(model => model.DoPhanGiaiCammeraTruoc, new { @type = "text", @placeholder = "Độ Phân Giải Camera Trước", @class = "khung" })
+            @Html.TextBoxFor(model => model.VideoCall, new { @type = "text", @placeholder = "VideoCall", @class = "khung" })
+            @Html.TextBoxFor(model => model.ThongTinKhacCamMera, new { @type = "text", @placeholder = "Thông Tin Khác Về Cammera", @class = "khung" })
+            @Html.TextBoxFor(model => model.DoPhanGiaiCamerasau, new { @type = "text", @placeholder = "Độ Phân Giải Camera Sau", @class = "khung" })
+            @Html.TextBoxFor(model => model.quayPhim, new { @type = "text", @placeholder = "Quay Phim", @class = "khung" })
+            @Html.TextBoxFor(model => model.denFlash, new { @type = "text", @placeholder = "Đèn Flash", @class = "khung" })
+            @Html.TextBoxFor(model => model.chupAnhNangCao, new { @type = "text", @placeholder = "Chụp Ảnh Nâng Cao", @class = "khung" })
+            @Html.TextBoxFor(model => model.hoTroMang, new { @type = "text", @placeholder = "Hỗ Trợ Mạng", @class = "khung" })
+            @Html.TextBoxFor(model => model.wifi, new { @type = "text", @placeholder = "WIFI", @class = "khung" })
+            @Html.TextBoxFor(model => model.GPS, new { @type = "text", @placeholder = "GPS", @class = "khung" })
+            @Html.TextBoxFor(model => model.bluetooth, new { @type = "text", @placeholder = "bluetooth", @class = "khung" })
+            @Html.TextBoxFor(model => model.congKetNoi, new { @type = "text", @placeholder = "Cổng Kết Nối", @class = "khung" })
+            @Html.TextBoxFor(model => model.JackTaiNGhe, new { @type = "text", @placeholder = "Jack Tai Nghe", @class = "khung" })
+            @Html.TextBoxFor(model => model.ketNoiKhac, new { @type = "text", @placeholder = "Kết Nối khác", @class = "khung" })
+            @Html.TextBoxFor(model => model.thietKe, new { @type = "text", @placeholder = "Thiết Kế", @class = "khung" })
+            @Html.TextBoxFor(model => model.ChatLieu, new { @type = "text", @placeholder = "Chất Liệu", @class = "khung" })
+            @Html.TextBoxFor(model => model.KichThuoc, new { @type = "text", @placeholder = "Kích Thước", @class = "khung" })
+            @Html.TextBoxFor(model => model.TrongLuong, new { @type = "text", @placeholder = "Trọng Lượng", @class = "khung" })
+            @Html.TextBoxFor(model => model.LoaiPin, new { @type = "text", @placeholder = "Loại Pin", @class = "khung" })
+            @Html.TextBoxFor(model => model.CongNghePin, new { @type = "text", @placeholder = "Công NGhệ Pin", @class = "khung" })
+            @Html.TextBoxFor(model => model.dung_luong_Pin, new { @type = "number", @placeholder = "Dung Lượng Pin", @class = "khung" })
+            @Html.TextBoxFor(model => model.BaoMat, new { @type = "text", @placeholder = "Chế Độ Bảo Mật", @class = "khung" })
+            @Html.TextBoxFor(model => model.TinhNangNoiBat, new { @type = "text", @placeholder = "Tính Năng nổi Bật", @class = "khung" })
+            @Html.TextBoxFor(model => model.GhiAm, new { @type = "text", @placeholder = "GHI Âm", @class = "khung" })
+            @Html.TextBoxFor(model => model.Radio, new { @type = "text", @placeholder = "RaDio", @class = "khung" })
+            @Html.TextBoxFor(model => model.XemPhim, new { @type = "text", @placeholder = "Xem Phim", @class = "khung" })
+            @Html.TextBoxFor(model => model.NGheNHac, new { @type = "text", @placeholder = "Nghe Nhạc", @class = "khung" })
+            @Html.TextBoxFor(model => model.ThoiDiemRaMat, new { @type = "text", @placeholder = "Thời Gian Ra mắt", @class = "khung" })
+            @Html.TextBoxFor(model => model.sanpham, new { @type = "number", @placeholder = "", @class = "khung hhh" })
+            <button class="btn btn-success" style="width:100%; margin-bottom:12em;">Thêm Thông Tin</button>
+        }
+    </div>
+</div>
+

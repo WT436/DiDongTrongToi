@@ -1,0 +1,93 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_tainghe
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Loại</td>
+                        <td>@Model.chungLoai</td>
+                    </tr>
+                    <tr>
+                        <td>Tương Thích</td>
+                        <td>@Model.TuongThich </td>
+                    </tr>
+                    <tr>
+                        <td>Công Xuất</td>
+                        <td>@Model.congXuat</td>
+                    </tr>
+                    <tr>
+                        <td>Cách Kết Nối</td>
+                        <td>@Model.cachKetNoi</td>
+                    </tr>
+                    <tr>
+                        <td>Phím điều Khiển</td>
+                        <td>@Model.PhimDieuKhien</td>
+                    </tr>
+                    <tr>
+                        <td>Tính năng Khác</td>
+                        <td>@Model.TinhNangKhac</td>
+                    </tr>
+                    <tr>
+                        <td>Khoảng Cách Kết Nối</td>
+                        <td>@Model.KhoangCachBluetooth</td>
+                    </tr>
+                    <tr>
+                        <td>Kích Thước siêu Trầm</td>
+                        <td>@Model.kichThuocSieuTram</td>
+                    </tr>
+                    <tr>
+                        <td>Kích Thước Vệ Tinh</td>
+                        <td>@Model.KichThuocVeTinh</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng Lượng</td>
+                        <td>@Model.trongLuong</td>
+                    </tr>
+                    <tr>
+                        <td>Thương Hiệu</td>
+                        <td>@Model.thuongHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Xuất Sứ</td>
+                        <td>@Model.XuatSu</td>
+                    </tr>
+                    <tr>
+                        <td>Hạng Chuẩn</td>
+                        <td>@Model.BoBanHangChuan</td>
+                    </tr>
+                    <tr>
+                        <td>Cổng Sạc</td>
+                        <td>@Model.CongSac</td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sử Dụng</td>
+                        <td>@Model.ThoiGianSuDung</td>
+                    </tr>
+                    <tr>
+                        <td>Kết Nối Cùng Lúc</td>
+                        <td>@Model.KetNoiCungLuc</td>
+                    </tr>
+                    <tr>
+                        <td>Thời Gian Sạc Đầy</td>
+                        <td>@Model.ThoiGianXacDay</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

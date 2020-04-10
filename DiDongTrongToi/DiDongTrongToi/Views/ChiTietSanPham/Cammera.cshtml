@@ -1,0 +1,69 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_Cammera
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Độ Phân Giải</td>
+                        <td>@Model.dophangiai</td>
+                    </tr>
+                    <tr>
+                        <td>Nguồn Điện Đầu Vào</td>
+                        <td>@Model.nguondienvao</td>
+                    </tr>                    
+                    <tr>
+                        <td>Tầm Nhìn Hồng Ngoại</td>
+                        <td>@Model.tamNhinHongNgoai</td>
+                    </tr>
+                    <tr>
+                        <td>Hỗ Trợ thẻ nhớ</td>
+                        <td>@Model.hoTroTheNho</td>
+                    </tr>
+                    <tr>
+                        <td>Hỗ Trợ Thiết Bị</td>
+                        <td>@Model.hoTroThietBi</td>
+                    </tr>
+                    <tr>
+                        <td>Kích Thước</td>
+                        <td>@Model.hoTroThietBi</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng Lượng</td>
+                        <td>@Model.trongluong</td>
+                    </tr>
+                    <tr>
+                        <td>Nhiệt độ Hoạt động</td>
+                        <td>@Model.nhietdoHoatDong</td>
+                    </tr>
+                    <tr>
+                        <td>Thương Hiệu</td>
+                        <td>@Model.thuongHieu</td>
+                    </tr>
+                    <tr>
+                        <td>Nguồn Gốc</td>
+                        <td>@Model.nguonGoc</td>
+                    </tr>
+                    <tr>
+                        <td>Đi Kèm</td>
+                        <td>@Model.PhuKien</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@using DiDongTrongToi.Models
+@model Dat_Hang
+@{
+    bandiDongEntities db = new bandiDongEntities();
+    ViewBag.Title = "TrangThai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <table class="table table-sm" style="margin-left:10% ; width:80%">
+        <tbody>
+            <tr style="margin-left:5%;">
+                <td style="width:30%">Tên : @db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</td>
+                <td style="width:30%">Số Lượng :@Model.soLuong</td>
+                @if (db.magiamgias.Where(l => l.id == Model.giamgia).Count() == 0)
+                {
+
+                }
+                else
+                {
+                    <td style="width:30%">Giảm Giá :@db.magiamgias.Where(l => l.id == Model.giamgia).FirstOrDefault().phan_Tram %</td>
+                }
+
+            </tr>
+            <tr>
+                <td>Ngày Đặt : @Model.ngaydat</td>
+                <td>Ngày Giao(Ước Lượng) :@Model.NgayGiao</td>
+                <td>Mã Giảm Giá : @Model.giamgia</td>
+            </tr>
+            <tr>
+                @if (Model.VanChuyen == false && Model.ChuanBi == true && Model.daGiao == false)
+                {
+                    <td style="width:100%; text-align:center;" colspan="4">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 18%"></div>
+                        </div>
+                    </td>
+                }
+                else if (Model.VanChuyen == true && Model.ChuanBi == true && Model.daGiao == false)
+                {
+                    <td style="width:100%; text-align:center;" colspan="4">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                        </div>
+                    </td>
+                }
+                else
+                {
+                    <td style="width:100%; text-align:center;" colspan="4">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </td>
+                }
+
+            </tr>
+            <tr style="text-align:center;">
+                <td>Chuẩn Bị</td>
+                <td>Vận chuyển</td>
+                <td>Hoàn Tất</td>
+            </tr>
+            <tr>
+                <td><a  href="@Url.Action("Index","Home")" class="btn btn-success">Home</a></td>               
+            </tr>
+        </tbody>
+    </table>
+
+

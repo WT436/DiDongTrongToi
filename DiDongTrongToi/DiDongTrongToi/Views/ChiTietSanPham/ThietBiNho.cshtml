@@ -1,0 +1,54 @@
+﻿@using DiDongTrongToi.Models;
+@model chi_tiet_PhuKien_ThietBiNho
+@{
+    ViewBag.Title = "gf";
+    Layout = "~/Views/ChiTietSanPham/LayOutChiTiet.cshtml";
+    bandiDongEntities db = new bandiDongEntities();
+}
+<div style="width:100%; font-size:200%; background-color:#a99595; color:black; position:fixed; z-index:100;"><b><i>@db.sanphams.Where(m => m.id == Model.sanpham).FirstOrDefault().ten</i></b></div>
+<div style="padding-top:100px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>Dung lượng</td>
+                        <td>@Model.dungluong</td>
+                    </tr>
+                    <tr>
+                        <td>Tốc độ đọc</td>
+                        <td>@Model.tocdodoc</td>
+                    </tr>
+                    <tr>
+                        <td>Tốc độ ghi</td>
+                        <td>@Model.tocdoghi</td>
+                    </tr>
+                    <tr>
+                        <td>Kích thước</td>
+                        <td>@Model.kichthuoc</td>
+                    </tr>
+                    <tr>
+                        <td>Trọng lượng</td>
+                        <td>@Model.trongluong</td>
+                    </tr>
+                    <tr>
+                        <td>Sản xuất tại</td>
+                        <td>@Model.noisanxuat </td>
+                    </tr>
+                    <tr>
+                        <td>Thương hiệu của</td>
+                        <td> @Model.thuonghieu</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

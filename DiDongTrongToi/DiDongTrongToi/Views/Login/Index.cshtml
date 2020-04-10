@@ -1,0 +1,167 @@
+﻿@using DiDongTrongToi.Models.Login
+@model LoginModel
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+    <title>Chào Mừng Bạn Đã đến với Đăng Nhập</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Triple Forms Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="~/Content/Login/css/style.css" rel="stylesheet" />
+    <!-- Style-CSS -->
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext"
+          rel="stylesheet">
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    <div class="main-bg">
+        <!-- title -->
+        <h1>Đăng Nhập </h1>
+        <!-- //title -->
+        <div class="sub-main-WT">
+            <div class="image-style">
+                <img style="height:12em; width:12em; margin-left:18%; border-radius:100%; margin-top:30%;" src="~/Content/IMG/avatar.png" />
+            </div>
+            <style>
+                .image-style {
+                    background-color: aliceblue;
+                    background-size: cover;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    -ms-background-size: cover;
+                    min-height: 371px;
+                }
+            </style>
+            <!-- vertical tabs -->
+            <div class="vertical-tab">
+                <div id="section1" class="section-HaiNam">
+                    <input type="radio" name="sections" id="option1" checked>
+                    <label for="option1" class="icon-left-WTpvt"><span class="fa fa-user-circle" aria-hidden="true"></span>Login</label>
+                    <article>
+                        @using (Html.BeginForm("HandlingLoginUser", "Login", FormMethod.Post))
+                        {
+                            <h3 class="legend">Đăng Nhập Ngay</h3>
+                            <div style="color:red">
+                                @Html.ValidationSummary(false, "", "Error")
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-user-o" aria-hidden="true"></span>
+                                @Html.TextBoxFor(model => model.TaiKhoan, new { @placeholder = "Tài Khoản", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-key" aria-hidden="true"></span>
+                                @Html.PasswordFor(model => model.MatKhau, new { @placeholder = "Mật Khẩu" })
+                            </div>
+
+                            <button type="submit" id="BtnLoginUser" class="btn submit">Đăng Nhập</button>
+                            <a href="#" class="bottom-text-HaiNam">Tạo Tài Khoản Mới</a>
+                        }
+                    </article>
+                </div>
+                <div id="section2" class="section-HaiNam">
+                    <input type="radio" name="sections" id="option2">
+                    <label for="option2" class="icon-left-WTpvt"><span class="fa fa-pencil-square" aria-hidden="true"></span>Đổi Mật Khẩu</label>
+                    <article>
+                        @using (Html.BeginForm("ChangePass", "Login", FormMethod.Post))
+                        {
+                            <h3 class="legend">Đổi Ngay</h3>
+                            <div style="color:red">
+                                @Html.ValidationSummary(false, "", "Error")
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-user-o" aria-hidden="true"></span>
+                                @Html.TextBoxFor(model => model.TaiKhoan, new { @placeholder = "Tài Khoản", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-key" aria-hidden="true"></span>
+                                @Html.PasswordFor(model => model.MatKhau, new { @placeholder = "Mật Khẩu" })
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-key" aria-hidden="true"></span>
+                                @Html.PasswordFor(model => model.MatKhauMoi, new { @placeholder = "Mật Khẩu Mới" })
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-key" aria-hidden="true"></span>
+                                @Html.PasswordFor(model => model.MatKhauLai, new { @placeholder = "Nhập Lại Mật Khẩu" })
+                            </div>
+                            <button type="submit" id="ChangePassLoginUser" class="btn submit">Đổi Ngay</button>
+                        }
+                    </article>
+                </div>
+                <div id="section3" class="section-HaiNam">
+                    <input type="radio" name="sections" id="option3">
+                    <label for="option3" class="icon-left-WTpvt"><span class="fa fa-lock" aria-hidden="true"></span>Lấy Lại Mật Khẩu</label>
+                    <article>
+                        @using (Html.BeginForm("RecoverPass", "Login", FormMethod.Post))
+                        {
+                            <h3 class="legend last">Reset Password</h3>
+                            <p class="para-style">Nhập địa chỉ email của bạn dưới đây và chúng tôi sẽ gửi cho bạn một email với hướng dẫn.</p>
+                            <p class="para-style-2">
+                                <strong>Trợ Giúp ?</strong> Tìm hiểu thêm về cách  <a href="#">
+                                    lấy lại tài khoản hiện có.
+                                </a>
+                            </p>
+                            <div class="input">
+                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                @Html.TextBoxFor(model => model.TaiKhoan, new { @placeholder = "Tài Khoản", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input">
+                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                @Html.TextBoxFor(model => model.Gmail, new { @placeholder = "Gmail", @autofocus = "autofocus" })
+                            </div>
+                            <button type="submit" class="btn submit last-btn">Gửi</button>
+                        }
+                        </article>
+                </div>
+                <div id="section4" class="section-HaiNam">
+                    <input type="radio" name="sections" id="option4">
+                    <label for="option4" class="icon-left-WTpvt"><span class="fa fa-facebook" aria-hidden="true"></span>Khác</label>
+                    <article>
+                        <form action="#" method="post">
+                            <h3 class="legend last">Đăng Nhập Thông Qua</h3>
+                            <p class="para-style">Lựa Chọn Hai Hình Thức Đăng Nhập Của Bạn</p>
+                            <a href="@Url.Action("LoginFace","Login")" class="btn submit last-btn" style="background-color:#1355f5"><i class="fa fa-2x fa-facebook"></i>   FaceBook</a>
+                            <button type="submit" class="btn submit last-btn" style="background-color:red;"><i class="fa fa-2x fa-google"></i>   Google</button>
+                        </form>
+                    </article>
+                </div>
+            </div>
+            <!-- //vertical tabs -->
+            <div class="clear"></div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <h2>
+                &copy; 2019 Triple Forms. All rights reserved | Design by
+                <a href="http://WTlayouts.com" target="_blank">WTlayouts</a>
+            </h2>
+        </div>
+        <!-- //copyright -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="~/Content/Home/js/Login.js"></script>
+</body>
+
+</html>
+
+
